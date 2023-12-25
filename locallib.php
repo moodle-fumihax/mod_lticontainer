@@ -338,7 +338,7 @@ function  container_exec($mi, $cmd)
 
     $container_cmd = null;
     if ($mi->use_podman==1) {
-        if (!strncmp('stop ', $cmd, 5)) {  // podman command causes an error. should we use "podman pod" command ?
+        if (!strncmp('stop ', $cmd, 5)) {  // podman command causes an error. (???)
             if (file_exists(LTICONTAINER_DOCKER_CMD)) {
                 $container_cmd = LTICONTAINER_DOCKER_CMD.' -H unix://'.$socket_file.' '.$cmd;
             }

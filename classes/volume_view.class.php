@@ -105,7 +105,7 @@ class  VolumeView
                         foreach ($this->deletes as $del=>$value) {
                             if (substr($del, -$len_check)==$check_course) { 
                                 $cmd = 'volume rm '.$del;
-                                container_exec($cmd, $this->minstance);
+                                container_exec($this->minstance, $cmd);
                                 //
                                 $event = lticontainer_get_event($this->cmid, 'volume_delete', $this->url_params, $cmd);
                                 $event->add_record_snapshot('course', $this->course);
@@ -119,7 +119,7 @@ class  VolumeView
         }
 
         //
-        $rslts = container_exec('volume ls', $this->minstance);
+        $rslts = container_exec($this->minstance, 'volume ls');
         if (isset($rslts['error'])) {
             print_error($rslts['error'], 'mod_lticontainer', $this->error_url);
         }

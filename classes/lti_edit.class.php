@@ -196,7 +196,7 @@ class  LTIEdit
                         $lowstr  = mb_strtolower($custom_data->lms_vol_name[$i]);
                         $dirname = preg_replace("/[^a-z0-9]/", '', $lowstr);
                         $cmd = 'volume create '.$vol.$dirname.'_'.$this->courseid.'_'.$this->host_name;
-                        container_exec($cmd, $this->minstance);
+                        container_exec($this->minstance, $cmd);
                     }
                     $i++;
                 }
@@ -204,7 +204,7 @@ class  LTIEdit
         }
 
         // サーバ上のイメージの一覧取得
-        $rslts = container_exec('images', $this->minstance);
+        $rslts = container_exec($this->minstance, 'images');
         if (!empty($rslts) and isset($rslts['error'])) {
             print_error($rslts['error'], 'mod_lticontainer', $this->error_url);
         }

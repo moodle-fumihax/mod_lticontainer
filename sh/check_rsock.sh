@@ -26,9 +26,11 @@ COMD=$5
 
 if [ "$CTRSYS" = "docker" ]; then
     ./container_rsock.sh $HOST $USER $PASS /tmp/docker_tmp.sock
+    echo docker -H unix:///tmp/docker_tmp.sock $COMD
     docker -H unix:///tmp/docker_tmp.sock $COMD
 else
     ./container_rsock.sh $HOST $USER $PASS /tmp/podman_tmp.sock /var/run/podman/podman.sock
+    echo podman-remote --url unix:///tmp/podman_tmp.sock $COMD
     podman-remote --url unix:///tmp/podman_tmp.sock $COMD
 fi
 

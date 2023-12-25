@@ -49,7 +49,7 @@ function  jupyterhub_api_delete($url, $com, $token)
 function  unlock_podman_containers($mi, $locked_user)
 
 function  container_socket($mi, $socket_file)
-function  container_exec($cmd, $mi)
+function  container_exec($mi, $cmd)
 
 function  lticontainer_get_event($cmid, $action, $params='', $info='')
 function  lticontainer_explode_custom_params($custom_params)
@@ -267,14 +267,27 @@ function  jupyterhub_api_delete($url, $com, $token)
 
 function  unlock_podman_containers($mi, $locked_user)
 {
+    $locked_user = str_replace(array(';','(',')',' ','\\','$','*','<','>'), '', $locked_user); 
+    $luser = 'jupyterhub-'.$locked_user;
+
+    $rslts = container_exec($mi, 'ps -a');
+    foreach ($rslts as $rslt) {
+        $rslt = preg_replace("/[\s]+/", ' ', trim($rslt));
+        $rslt = str_replace('\t', ' ', $rslt);
+        $ps_a = explode(' ', $rslt);
+        if (!strncmp($luser, $ps_a[11], strlen($luser))) {
+            $ret = container_exec($mi, 'stop '.$ps_a[0]);
+        }
+    }
+
     $container_host = parse_url($mi->jupyterhub_url, PHP_URL_HOST);
     $cmd_params = $container_host.' '.$mi->docker_user.' '.$mi->docker_pass.' '.$locked_user;
     $unlock_cmd = __DIR__.'/sh/unlock_podman.sh '.$cmd_params;
 
-    $rslts = array();
-    exec($unlock_cmd, $rslts);
+    //exec($unlock_cmd, $rslts);
+    exec($unlock_cmd);
 
-    return $rslts;
+    return; 
 }
 
 
@@ -304,7 +317,7 @@ function  container_socket($mi, $socket_file)
 }
 
 
-function  container_exec($cmd, $mi)
+function  container_exec($mi, $cmd)
 {
     $rslts = array();
     $container_host = parse_url($mi->jupyterhub_url, PHP_URL_HOST);
@@ -325,7 +338,12 @@ function  container_exec($cmd, $mi)
 
     $container_cmd = null;
     if ($mi->use_podman==1) {
-        if (file_exists(LTICONTAINER_PODMAN_REMOTE_CMD)) {
+        if (!strncmp('stop ', $cmd, 5)) {  // podman command causes an error. should we use "podman pod" command ?
+            if (file_exists(LTICONTAINER_DOCKER_CMD)) {
+                $container_cmd = LTICONTAINER_DOCKER_CMD.' -H unix://'.$socket_file.' '.$cmd;
+            }
+        }
+        else if (file_exists(LTICONTAINER_PODMAN_REMOTE_CMD)) {
             $container_cmd = LTICONTAINER_PODMAN_REMOTE_CMD.' --url unix://'.$socket_file.' '.$cmd;
         }
         else {
@@ -341,7 +359,7 @@ function  container_exec($cmd, $mi)
     }
 
     if (!empty($container_cmd)) {
-        //echo $container_cmd;
+        //echo $container_cmd.'<br />';
         exec($container_cmd, $rslts);
 
         // retry

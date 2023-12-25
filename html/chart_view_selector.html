@@ -1,0 +1,34 @@
+
+<style type="text/css">
+  <?php include(__DIR__."/../html/styles.css"); ?>
+</style>
+
+<?php $date_format = get_string('datetime_format','mod_lticontainer'); ?>
+<?php include(__DIR__."/chart_view_jquery.html"); ?>
+
+<table align="center" style="margin-bottom:0.0em;">
+  <tr><td>
+    <form action="<?php echo basename(__FILE__).'?id='.$cmid; ?>" method="POST">
+      <label for="user_select_box">User Name:</label>
+      <?php echo $user_select_box; ?>
+      &emsp;
+      <label for="lti_select_box">LTI:</label>
+      <?php echo $lti_select_box; ?>
+      &emsp;
+      <label for="lti_select_box">File:</label>
+      <?php echo $file_select_box; ?>
+
+      <?php if ($args->time_period != 'real') { ?>
+        &emsp;
+        <label for="lti_select_box">Date:</label>
+        <input type="text" name="start_date_input" style="width:140px;" id="SDateTime" value="<?php echo $sdatetime; ?>">&nbsp;-&nbsp; 
+        <input type="text" name="end_date_input"   style="width:140px;" id="EDateTime" value="<?php echo $edatetime; ?>">
+      <?php } ?>
+      &emsp;
+      <input type="hidden" id="id" name="id" value="<?php echo $cmid; ?>">
+      <input type="hidden" id="chart_kind"  name="chart_kind"  value="<?php echo $args->chart_kind; ?>">
+      <input type="hidden" id="time_period" name="time_period" value="<?php echo $args->time_period; ?>">
+      <input type="submit" value="Display">
+    </form>
+  </td></tr>
+</table>

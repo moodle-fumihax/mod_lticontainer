@@ -1,0 +1,12 @@
+
+/******************************/
+select {
+    width: auto;
+    height: 24px;
+    font-size: 14px;
+}
+
+input[type="text"] {
+    height: 24px;
+    font-size: 14px;
+}

@@ -1,0 +1,53 @@
+
+.py-3 {
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+}
+
+
+/************************************/
+
+table {
+    margin-bottom: 0.3em;
+}
+
+td {
+    padding: 0.3em;
+}
+
+
+h2, .h2 {
+    font-size: 1.4rem !important;
+}
+
+
+h3, .h3 {
+    font-size: 1.2rem !important;
+}
+
+
+h4, .h4 {
+    font-size: 1.0rem !important;
+}
+
+
+.head {
+    font-weight: bold;
+    color: #105ba7;
+    background-color: #ddd;
+}
+
+.odd {
+    font-weight: bold;
+    background-color: #eee;
+}
+
+.even {
+    font-weight: bold;
+    background-color: #eee;
+}
+
+.tabtree .tabrow0 li {
+    margin-right: 0px;
+}
+

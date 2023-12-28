@@ -3,18 +3,16 @@
 ## Moodle Module for Integration System of Moodle and JupyterHub
 
 ### Wiki
-- English:  https://gitlab.nsl.tuis.ac.jp/iseki/mod_lticontainer/-/wikis/mod_lticontainer
-- Japanese: https://gitlab.nsl.tuis.ac.jp/iseki/mod_lticontainer/-/wikis/mod_lticontainer-(J)
+- English:  https://github.com/moodle-fumihax/mod_lticontainer/wiki
+- Japanese: https://github.com/moodle-fumihax/mod_lticontainer/wiki/mod_lticontainer-(J)
 
-### Please see also bellow wiki
-* English:  https://gitlab.nsl.tuis.ac.jp/iseki/lticontainerspawner/-/wikis/Moodle-+-JupyterHub
-* Japanese: https://gitlab.nsl.tuis.ac.jp/iseki/lticontainerspawner/-/wikis/Moodle-+-JupyterHub-(J)
-
+### Please see also bellow wiki (Moodle + JupyterHub)
+* English:  https://github.com/jupyter-fumihax/lticontainerspawner/wiki/Moodle-&-JupyterHub
+* Japanese: https://github.com/jupyter-fumihax/lticontainerspawner/wiki/Moodle-&-JupyterHub-(J)
 
 
 ### License
-
-2021 Fumi.Iseki <iseki@rsch.tuis.ac.jp> and Masanori Urano <j18081mu@edu.tuis.ac.jp> at NSL of TUIS
+2021 Fumi.Iseki <iseki@rsch.tuis.ac.jp> and Masanori Urano at NSL of TUIS
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software

@@ -26,8 +26,10 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin = new stdClass();
 
-$plugin->release   = '1.4.0';
-$plugin->version   = 2023082701;
+$plugin->release   = '1.4.1';
+
+$plugin->version   = 2024010500;    // for Icon
+//$plugin->version = 2023082701;
 //$plugin->version = 2023050901;
 //$plugin->version = 2023050600;
 //$plugin->version = 2023040250;

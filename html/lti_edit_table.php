@@ -233,6 +233,7 @@ function show_lti_edit_table_vol($cmds)
     //
     $i = 0;
     $j = 0;
+    //
     // Presen(Task) Volumes
     if (isset($cmds->mount_vol)) {
         $k = 0; // Flag 
@@ -244,23 +245,6 @@ function show_lti_edit_table_vol($cmds)
             $table->data[$i][] = '<input type="text" name="'.LTICONTAINER_LTI_VOLUMES_CMD.'name[]"  size="20" maxlength="30"  value="'.$key.'" />';
             $table->data[$i][] = '<input type="text" name="'.LTICONTAINER_LTI_VOLUMES_CMD.'link[]"  size="30" maxlength="100" value="'.$value.'" />';
             $table->data[$i][] = '<input type="text" name="'.LTICONTAINER_LTI_VOLUMES_CMD.'users[]" size="50" maxlength="200" value="'.$cmds->vol_users[$key].'" />';
-            $i++;
-            $k = 1;
-        }
-        if ($k==1) $j++;
-    }
-
-    // Submit Volumes
-    if (isset($cmds->mount_sub)) {
-        $k = 0;
-        foreach($cmds->mount_sub as $key => $value) { 
-            if (!isset($cmds->sub_users[$key])) $cmds->sub_users[$key] = '';
-            $table->data[$i][] = '<input type="hidden" name="'.LTICONTAINER_LTI_VOLUMES_CMD.'[]" value="'.LTICONTAINER_LTI_SUBMITS_CMD.'" />'. 
-                                 '<strong>'.get_string('sub_cmd_ttl', 'mod_lticontainer').'</strong>';
-            //$table->data[$i][] = '<input type="text" name="'.LTICONTAINER_LTI_VOLUMES_CMD.'name[]"  size="20" value="'.$key.'" readonly style="background-color:#eee;"/>';
-            $table->data[$i][] = '<input type="text" name="'.LTICONTAINER_LTI_VOLUMES_CMD.'name[]"  size="20" maxlength="30"  value="'.$key.'" />';
-            $table->data[$i][] = '<input type="text" name="'.LTICONTAINER_LTI_VOLUMES_CMD.'link[]"  size="30" maxlength="100" value="'.$value.'" />';
-            $table->data[$i][] = '<input type="text" name="'.LTICONTAINER_LTI_VOLUMES_CMD.'users[]" size="50" maxlength="200" value="'.$cmds->sub_users[$key].'" />';
             $i++;
             $k = 1;
         }
@@ -284,6 +268,23 @@ function show_lti_edit_table_vol($cmds)
         if ($k==1) $j++;
     }
 
+    // Submit Volumes
+    if (isset($cmds->mount_sub)) {
+        $k = 0;
+        foreach($cmds->mount_sub as $key => $value) { 
+            if (!isset($cmds->sub_users[$key])) $cmds->sub_users[$key] = '';
+            $table->data[$i][] = '<input type="hidden" name="'.LTICONTAINER_LTI_VOLUMES_CMD.'[]" value="'.LTICONTAINER_LTI_SUBMITS_CMD.'" />'. 
+                                 '<strong>'.get_string('sub_cmd_ttl', 'mod_lticontainer').'</strong>';
+            //$table->data[$i][] = '<input type="text" name="'.LTICONTAINER_LTI_VOLUMES_CMD.'name[]"  size="20" value="'.$key.'" readonly style="background-color:#eee;"/>';
+            $table->data[$i][] = '<input type="text" name="'.LTICONTAINER_LTI_VOLUMES_CMD.'name[]"  size="20" maxlength="30"  value="'.$key.'" />';
+            $table->data[$i][] = '<input type="text" name="'.LTICONTAINER_LTI_VOLUMES_CMD.'link[]"  size="30" maxlength="100" value="'.$value.'" />';
+            $table->data[$i][] = '<input type="text" name="'.LTICONTAINER_LTI_VOLUMES_CMD.'users[]" size="50" maxlength="200" value="'.$cmds->sub_users[$key].'" />';
+            $i++;
+            $k = 1;
+        }
+        if ($k==1) $j++;
+    }
+
     // New Volumes
     //$select_opt  = '<option value="'.LTICONTAINER_LTI_VOLUMES_CMD.'" />'.get_string('vol_cmd_ttl', 'mod_lticontainer').'</option>';
     //$select_opt .= '<option value="'.LTICONTAINER_LTI_SUBMITS_CMD.'" />'.get_string('sub_cmd_ttl', 'mod_lticontainer').'</option>';
@@ -300,8 +301,8 @@ function show_lti_edit_table_vol($cmds)
         else if ($cnt%3==1) $select_sub = 'selected';
         else                $select_prs = 'selected';
         $select_opt  = '<option value="'.LTICONTAINER_LTI_VOLUMES_CMD.'" '.$select_vol.' />'.get_string('vol_cmd_ttl', 'mod_lticontainer').'</option>';
-        $select_opt .= '<option value="'.LTICONTAINER_LTI_SUBMITS_CMD.'" '.$select_sub.' />'.get_string('sub_cmd_ttl', 'mod_lticontainer').'</option>';
         $select_opt .= '<option value="'.LTICONTAINER_LTI_PRSNALS_CMD.'" '.$select_prs.' />'.get_string('prs_cmd_ttl', 'mod_lticontainer').'</option>';
+        $select_opt .= '<option value="'.LTICONTAINER_LTI_SUBMITS_CMD.'" '.$select_sub.' />'.get_string('sub_cmd_ttl', 'mod_lticontainer').'</option>';
         //
         $table->data[$i][] = '<select name="'.LTICONTAINER_LTI_VOLUMES_CMD.'[]" autocomplete="off" >'.$select_opt.'</select>'; 
         $table->data[$i][] = '<input type="text" name="'.LTICONTAINER_LTI_VOLUMES_CMD.'name[]"  size="20" maxlength="30"  value="" />';

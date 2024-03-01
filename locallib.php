@@ -20,8 +20,8 @@ define('LTICONTAINER_LTI_OPTIONS_CMD',     'lms_options');
 define('LTICONTAINER_LTI_IFRAME_CMD',      'lms_iframe');
 define('LTICONTAINER_LTI_DEFURL_CMD',      'lms_defurl');
 define('LTICONTAINER_LTI_VOLUMES_CMD',     'lms_vol_');
-define('LTICONTAINER_LTI_SUBMITS_CMD',     'lms_sub_');
 define('LTICONTAINER_LTI_PRSNALS_CMD',     'lms_prs_');
+define('LTICONTAINER_LTI_SUBMITS_CMD',     'lms_sub_');
 
 define('LTICONTAINER_LTI_SESSIONINFO_CMD', 'lms_sessioninfo');
 define('LTICONTAINER_LTI_RPCTOKEN_CMD',    'lms_rpctoken');
@@ -461,20 +461,20 @@ function  lticontainer_explode_custom_params($custom_params)
                         if (isset($actl[1])) $cmds->vol_users[$vol[2]] = $actl[1];
                     }
                 }
-                else if (!strncmp(LTICONTAINER_LTI_SUBMITS_CMD, $cmd[0], strlen(LTICONTAINER_LTI_SUBMITS_CMD))) {
-                    $sub = explode('_', $cmd[0]);
-                    if (isset($sub[2])) {
-                        $actl = explode(':', $cmd[1]);
-                        $cmds->mount_sub[$sub[2]] = $actl[0];
-                        if (isset($actl[1])) $cmds->sub_users[$sub[2]] = $actl[1];
-                    }
-                }
                 else if (!strncmp(LTICONTAINER_LTI_PRSNALS_CMD, $cmd[0], strlen(LTICONTAINER_LTI_PRSNALS_CMD))) {
                     $prs = explode('_', $cmd[0]);
                     if (isset($prs[2])) {
                         $actl = explode(':', $cmd[1]);
                         $cmds->mount_prs[$prs[2]] = $actl[0];
                         if (isset($actl[1])) $cmds->prs_users[$prs[2]] = $actl[1];
+                    }
+                }
+                else if (!strncmp(LTICONTAINER_LTI_SUBMITS_CMD, $cmd[0], strlen(LTICONTAINER_LTI_SUBMITS_CMD))) {
+                    $sub = explode('_', $cmd[0]);
+                    if (isset($sub[2])) {
+                        $actl = explode(':', $cmd[1]);
+                        $cmds->mount_sub[$sub[2]] = $actl[0];
+                        if (isset($actl[1])) $cmds->sub_users[$sub[2]] = $actl[1];
                     }
                 }
                 else {

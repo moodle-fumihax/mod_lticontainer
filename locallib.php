@@ -275,7 +275,7 @@ function  unlock_podman_containers($mi, $locked_user)
         $rslt = preg_replace("/[\s]+/", ' ', trim($rslt));
         $rslt = str_replace('\t', ' ', $rslt);
         $ps_a = explode(' ', $rslt);
-        if (!strncmp($luser, $ps_a[11], strlen($luser))) {
+        if (array_key_exists(11, $ps_a) and !strncmp($luser, $ps_a[11], strlen($luser))) {
             $ret = container_exec($mi, 'stop '.$ps_a[0]);
         }
     }

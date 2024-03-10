@@ -112,8 +112,10 @@ class  LTIConnect
         $namel = strlen($hname);
         foreach ($this->ltis as $key => &$lti) {
             $type = $DB->get_record('lti_types', array('id' => $lti->typeid), 'tooldomain');
-            if (strncasecmp($type->tooldomain, $hname, $namel)) { 
-                unset($this->ltis[$key]);
+            if ($type) {
+                if (strncasecmp($type->tooldomain, $hname, $namel)) { 
+                    unset($this->ltis[$key]);
+                }
             }
         }
 

@@ -18,7 +18,7 @@
  * Plugin version and other meta-data are defined here.
  *
  * @package     mod_lticontainer
- * @copyright   2021 Fumi.Iseki <iseki@rsch.tuis.ac.jp>
+ * @copyright   2021 Fumi.Iseki <fumi.hax@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -26,9 +26,10 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin = new stdClass();
 
-$plugin->release   = '1.4.1';
+$plugin->release   = '1.5.0';
 
-$plugin->version   = 2024010500;    // for Icon
+$plugin->version   = 2024041300;    // closing submit, join volume
+//$plugin->version = 2024010500;    // for Icon
 //$plugin->version = 2023082701;
 //$plugin->version = 2023050901;
 //$plugin->version = 2023050600;

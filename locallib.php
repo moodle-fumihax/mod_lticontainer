@@ -22,6 +22,7 @@ define('LTICONTAINER_LTI_DEFURL_CMD',      'lms_defurl');
 define('LTICONTAINER_LTI_VOLUMES_CMD',     'lms_vol_');
 define('LTICONTAINER_LTI_PRSNALS_CMD',     'lms_prs_');
 define('LTICONTAINER_LTI_SUBMITS_CMD',     'lms_sub_');
+define('LTICONTAINER_LTI_CLOSE_CMD',       'close');
 
 define('LTICONTAINER_LTI_SESSIONINFO_CMD', 'lms_sessioninfo');
 define('LTICONTAINER_LTI_RPCTOKEN_CMD',    'lms_rpctoken');
@@ -441,8 +442,9 @@ function  lticontainer_explode_custom_params($custom_params)
     $cmds->mount_sub  = array();
     $cmds->mount_prs  = array();
     $cmds->vol_users  = array();
-    $cmds->sub_users  = array();
     $cmds->prs_users  = array();
+    $cmds->sub_users  = array();
+    $cmds->sub_close  = array();
 
     $str = str_replace(array("\r\n", "\r", "\n"), "\n", $custom_params);
     $customs = explode("\n", $str);
@@ -471,7 +473,12 @@ function  lticontainer_explode_custom_params($custom_params)
                 }
                 else if (!strncmp(LTICONTAINER_LTI_SUBMITS_CMD, $cmd[0], strlen(LTICONTAINER_LTI_SUBMITS_CMD))) {
                     $sub = explode('_', $cmd[0]);
-                    if (isset($sub[2])) {
+                    if (isset($sub[3])) {
+                        if (!strncmp(LTICONTAINER_LTI_CLOSE_CMD, $sub[3], strlen(LTICONTAINER_LTI_CLOSE_CMD))) {
+                            $cmds->sub_close[$sub[2]] = $cmd[1];
+                        }
+                    }
+                    else if (isset($sub[2])) {
                         $actl = explode(':', $cmd[1]);
                         $cmds->mount_sub[$sub[2]] = $actl[0];
                         if (isset($actl[1])) $cmds->sub_users[$sub[2]] = $actl[1];
@@ -587,13 +594,21 @@ function  lticontainer_join_custom_params($custom_data)
     $vol_array = array();
     $i = 0;
     foreach ($custom_data->lms_vol_ as $vol) {
-        if ($custom_data->lms_vol_name[$i]!='' and $custom_data->lms_vol_link[$i]!='') {
-            $users = '';
-            if ($custom_data->lms_vol_users[$i]!='') $users = ':'.$custom_data->lms_vol_users[$i];
-            $lowstr   = mb_strtolower($custom_data->lms_vol_name[$i]);
-            $dirname  = preg_replace("/[^a-z0-9]/", '', $lowstr);
-            $linkname = preg_replace("/[*;: $\!\"\'&+=|\\<>?^%~\`\(\)\{\}\[\]\n\r]/", '', $custom_data->lms_vol_link[$i]);
-            $vol_array[$vol.$dirname] = $linkname.$users;
+        if ($custom_data->lms_vol_name[$i]!='') {
+            if ($custom_data->lms_vol_link[$i]!='') {
+                $users = '';
+                if ($custom_data->lms_vol_users[$i]!='') $users = ':'.$custom_data->lms_vol_users[$i];
+                $lowstr   = mb_strtolower($custom_data->lms_vol_name[$i]);
+                $dirname  = preg_replace("/[^a-z0-9]/", '', $lowstr);
+                $linkname = preg_replace("/[*;: $\!\"\'&+=|\\<>?^%~\`\(\)\{\}\[\]\n\r]/", '', $custom_data->lms_vol_link[$i]);
+                $vol_array[$vol.$dirname] = $linkname.$users;
+            }
+            // closing
+            if ($custom_data->lms_vol_close[$i]!='none' and $custom_data->lms_vol_close[$i]!='') {
+                $close = strtotime($custom_data->lms_vol_close[$i]);
+                $param = $vol.$custom_data->lms_vol_name[$i].'_'.LTICONTAINER_LTI_CLOSE_CMD.'='.$close;
+                $custom_params .= $param."\r\n";
+            }
         }
         $i++;
     }

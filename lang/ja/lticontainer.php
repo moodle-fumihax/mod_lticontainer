@@ -130,6 +130,7 @@ $string['volume_role'] = 'Volume Role';
 $string['volume_name'] = 'Volume Name';
 $string['access_name'] = 'Access Name';
 $string['access_users'] = 'Accessible Users';
+$string['closing'] = 'Closing';
 
 // Table: LTI volume
 $string['volume_view'] = 'Volumes';

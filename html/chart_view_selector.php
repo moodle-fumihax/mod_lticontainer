@@ -23,19 +23,7 @@ function chart_view_selector($cmid, $args)
     $user_select_box .= '</select>';
 
     ///////////////////////////////////////
-    // File選択用セレクトボックス生成
-    $file_select_box  = '<select name="file_select_box">';
-    $file_select_box .= '<option value="*">*</option>';         // All filename symbol charcter '*'
-    //
-    $filenames = array_keys($args->filenames);
-    foreach($filenames as $fn) {
-        if($fn === $args->filename) $file_select_box .= '<option value="'.$fn.'" selected>'.$fn.'</option>';
-        else                        $file_select_box .= '<option value="'.$fn.'">'.$fn.'</option>';
-    }
-    $file_select_box .= '</select>';
-
-    ///////////////////////////////////////
-    // LTI選択用セレクトボックス生成
+    // LTI 選択用セレクトボックス生成
     $lti_select_box  = '<select name="lti_select_box">';
     if (count($args->lti_info)>1 or count($args->lti_info)==0) $lti_select_box .= '<option value="*">*</option>';    // All LTI symbol charcter '*'
     //
@@ -47,6 +35,20 @@ function chart_view_selector($cmid, $args)
     }
     $lti_select_box .= '</select>';
 
+    ///////////////////////////////////////
+    // File 選択用セレクトボックス生成
+    $file_select_box  = '<select name="file_select_box">';
+    $file_select_box .= '<option value="*">*</option>';         // All filename symbol charcter '*'
+    //
+    $filenames = array_keys($args->filenames);
+    foreach($filenames as $fn) {
+        if($fn === $args->filename) $file_select_box .= '<option value="'.$fn.'" selected>'.$fn.'</option>';
+        else                        $file_select_box .= '<option value="'.$fn.'">'.$fn.'</option>';
+    }
+    $file_select_box .= '</select>';
+
+    ///////////////////////////////////////
+    // Date 選択用セレクトボックス生成
     $start_date = str_replace('/', '-', $args->start_date);
     $end_date   = str_replace('/', '-', $args->end_date);
     $sdatetime  = (new DateTime($start_date))->format(get_string('datetime_format','mod_lticontainer'));

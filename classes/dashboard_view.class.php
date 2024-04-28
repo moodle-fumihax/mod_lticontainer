@@ -98,9 +98,11 @@ class  DashboardView
     function  set_condition()
     {
         $this->sql_r  = get_base_sql($this->courseid, $this->start_date_r, $this->end_date);
+        $this->sql_r .= ' AND inst_id = '.$this->minstance->id;
         $this->sql_r .= get_lti_sql_condition($this->lti_ids);
         //
         $this->sql_a  = get_base_sql($this->courseid, $this->start_date_a, $this->end_date);
+        $this->sql_a .= ' AND inst_id = '.$this->minstance->id;
         $this->sql_a .= get_lti_sql_condition($this->lti_ids);
 
         return true;

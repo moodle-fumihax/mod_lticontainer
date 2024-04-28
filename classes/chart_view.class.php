@@ -137,6 +137,7 @@ class  ChartView
         else                      $lti_id = $this->lti_id;
 
         $this->sql  = get_base_sql($this->courseid, $this->start_date, $this->end_date);
+        $this->sql .= ' AND inst_id = '.$this->minstance->id;
         $this->sql .= get_lti_sql_condition($lti_id);
 
         return true;

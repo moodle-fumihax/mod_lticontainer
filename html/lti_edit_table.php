@@ -232,7 +232,7 @@ function show_lti_edit_table_vol($cmds)
 
     $table->head [] = get_string('closing', 'mod_lticontainer');
     $table->align[] = 'left';
-    $table->size [] = '200px';
+    $table->size [] = '150px';
     $table->wrap [] = 'nowrap';
 
     //

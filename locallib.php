@@ -16,6 +16,7 @@ define('LTICONTAINER_LTI_CPUGRNT_CMD',     'lms_cpugrnt');
 define('LTICONTAINER_LTI_MEMGRNT_CMD',     'lms_memgrnt');
 define('LTICONTAINER_LTI_CPULIMIT_CMD',    'lms_cpulimit');
 define('LTICONTAINER_LTI_MEMLIMIT_CMD',    'lms_memlimit');
+define('LTICONTAINER_LTI_ACTLIMIT_CMD',    'lms_actlimit');
 define('LTICONTAINER_LTI_OPTIONS_CMD',     'lms_options');
 define('LTICONTAINER_LTI_IFRAME_CMD',      'lms_iframe');
 define('LTICONTAINER_LTI_DEFURL_CMD',      'lms_defurl');
@@ -510,6 +511,7 @@ function  lticontainer_join_custom_params($custom_data)
     if (!isset($custom_data->lms_image))       $custom_data->lms_image       = '';
     if (!isset($custom_data->lms_cpulimit))    $custom_data->lms_cpulimit    = '';
     if (!isset($custom_data->lms_memlimit))    $custom_data->lms_memlimit    = '';
+    if (!isset($custom_data->lms_actlimit))    $custom_data->lms_actlimit    = '';
     if (!isset($custom_data->lms_cpugrnt))     $custom_data->lms_cpugrnt     = '';
     if (!isset($custom_data->lms_memgrnt))     $custom_data->lms_memgrnt     = '';
     if (!isset($custom_data->lms_defurl))      $custom_data->lms_defurl      = '';
@@ -551,6 +553,13 @@ function  lticontainer_join_custom_params($custom_data)
         $lowstr = mb_strtolower($custom_data->lms_memlimit);
         $mlimit = preg_replace("/[^0-9,]/", '', $lowstr);
         $param  = LTICONTAINER_LTI_MEMLIMIT_CMD.'='.$mlimit;
+        $custom_params .= $param."\r\n";
+    }
+
+    if ($custom_data->lms_actlimit != '') {
+        $lowstr = mb_strtolower($custom_data->lms_actlimit);
+        $mlimit = preg_replace("/[^0-9]/", '', $lowstr);
+        $param  = LTICONTAINER_LTI_ACTLIMIT_CMD.'='.$mlimit;
         $custom_params .= $param."\r\n";
     }
 
@@ -604,10 +613,12 @@ function  lticontainer_join_custom_params($custom_data)
                 $vol_array[$vol.$dirname] = $linkname.$users;
             }
             // closing
-            if ($custom_data->lms_vol_close[$i]!='none' and $custom_data->lms_vol_close[$i]!='') {
-                $close = strtotime($custom_data->lms_vol_close[$i]);
-                $param = $vol.$custom_data->lms_vol_name[$i].'_'.LTICONTAINER_LTI_CLOSE_CMD.'='.$close;
-                $custom_params .= $param."\r\n";
+            if (property_exists($custom_data, "lms_vol_close")  and !is_null($custom_data->lms_vol_close[$i])) {
+                if ($custom_data->lms_vol_close[$i]!='' and $custom_data->lms_vol_close[$i]!='none') {
+                    $close = strtotime($custom_data->lms_vol_close[$i]);
+                    $param = $vol.$custom_data->lms_vol_name[$i].'_'.LTICONTAINER_LTI_CLOSE_CMD.'='.$close;
+                    $custom_params .= $param."\r\n";
+                }
             }
         }
         $i++;

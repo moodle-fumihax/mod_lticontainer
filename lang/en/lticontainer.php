@@ -174,6 +174,7 @@ $string['cpugrnt_cmd_ttl'] = 'CPU Guarantee';
 $string['memgrnt_cmd_ttl'] = 'Memory Guarantee';
 $string['cpulimit_cmd_ttl'] = 'CPU Limit';
 $string['memlimit_cmd_ttl'] = 'Memory Limit';
+$string['actlimit_cmd_ttl'] = 'Activity Limit';
 
 // view.php
 $string['wiki_url'] = 'https://gitlab.nsl.tuis.ac.jp/iseki/mod_lticontainer/-/wikis/mod_lticontainer';

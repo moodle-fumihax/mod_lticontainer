@@ -26,9 +26,10 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin = new stdClass();
 
-$plugin->release   = '1.5.0';
+$plugin->release   = '1.5.1';
 
-$plugin->version   = 2024041300;    // closing submit, join volume
+$plugin->version   = 2024060500;    // add activity limit
+//$plugin->version = 2024041300;    // closing submit, join volume
 //$plugin->version = 2024010500;    // for Icon
 //$plugin->version = 2023082701;
 //$plugin->version = 2023050901;

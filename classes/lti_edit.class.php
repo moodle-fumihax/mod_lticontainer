@@ -69,6 +69,9 @@ class  LTIEdit
                                                    '10GiB' =>'10,737,418,240', '12GiB'=>'12,884,901,888', '16GiB'=>'17,179,869,184');
         $this->cpu_grnt   = $this->cpu_limit;
         $this->mem_grnt   = $this->mem_limit;
+        $this->act_limit  = array('default'=>'', 'no limit'=>'0', '30m'=>'1800', '60m'=> '3600', '90m'=> '5400', '120m' => '7200', 
+                                                    '3h'=> '10800', '5h'=>'18000', '8h'=> '28800', '12h' => '43200', '24h' => '86400',
+                                                    '2d'=> '172800', '4d' =>'345600', '1w'=>'604800', '2w'=>'1209600', '4w' => '2419200');
 
         // filter
         $this->minstance->imgname_fltr;
@@ -107,6 +110,7 @@ class  LTIEdit
         $this->custom_prm->mem_grnt  = $this->mem_grnt;
         $this->custom_prm->cpu_limit = $this->cpu_limit;
         $this->custom_prm->mem_limit = $this->mem_limit;
+        $this->custom_prm->act_limit = $this->act_limit;
         $this->custom_prm->options   = $this->options;
     }
 

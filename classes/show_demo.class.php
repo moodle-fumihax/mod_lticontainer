@@ -19,6 +19,7 @@ class  ShowDemo
     var $items;
 
     // SQL
+    var $order        = '';
     var $sql_order    = '';
     var $sql_limit    = '';
 

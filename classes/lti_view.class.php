@@ -23,6 +23,7 @@ class  LTIConnect
     var $edit_url   = '';
     var $error_url  = '';
     var $url_params = array();
+    var $order      = '';
 
     var $ltis;
 
@@ -109,7 +110,8 @@ class  LTIConnect
         //
         // 違うドメイン(FQDN)の場合はリストから削除
         $hname = parse_url($this->minstance->jupyterhub_url, PHP_URL_HOST);
-        $namel = strlen($hname);
+        if ($hname==null) $namel = 0;
+        else              $namel = strlen($hname);
         foreach ($this->ltis as $key => &$lti) {
             $type = $DB->get_record('lti_types', array('id' => $lti->typeid), 'tooldomain');
             if ($type) {

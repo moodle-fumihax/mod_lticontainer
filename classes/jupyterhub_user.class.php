@@ -32,8 +32,9 @@ class  JupyterHubAPI
     var $users       = array();
 
     var $page_size   = 10;
+    var $userid      = '';
     var $status      = 'OK';
-    var $unsort      = 'asc';
+    var $nmsort      = 'asc';
     var $tmsort      = 'none';
     var $sort        = 'none';
 

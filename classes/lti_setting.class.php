@@ -15,6 +15,7 @@ class  LTIConnect
 
     var $isGuest    = true;
 
+    var $order      = '';
     var $action_url = '';
     var $error_url  = '';
     var $url_params = array();
@@ -67,7 +68,8 @@ class  LTIConnect
         $this->items = db_get_valid_ltis($this->courseid, $fields);
 
         $hname = parse_url($this->minstance->jupyterhub_url, PHP_URL_HOST);
-        $namel = strlen($hname);
+        if ($hname==null) $namel = 0;
+        else              $namel = strlen($hname);
         foreach ($this->items as $key => &$item) {
             $type = $DB->get_record('lti_types', array('id' => $item->typeid), 'tooldomain');
             if (!strncasecmp($type->tooldomain, $hname, $namel)) {  // 同じドメインのみ取り扱う

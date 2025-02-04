@@ -34,6 +34,7 @@ class  DashboardView
     var $start_date_a = '';
     var $start_date   = '';
     var $end_date     = '';
+    var $lti_info     = array();
     var $lti_ids      = array();
 
     var $sql_r;         // SQL for Real Time

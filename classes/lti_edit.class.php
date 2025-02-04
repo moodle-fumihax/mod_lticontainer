@@ -24,7 +24,8 @@ class  LTIEdit
     var $cpu_grnt   = array();
     var $mem_grnt   = array();
     var $cpu_limit  = array();
-    var $mem_limut  = array();
+    var $mem_limit  = array();
+    var $act_limit  = array();
 
     var $imgname_ok = array();
     var $imgname_ng = array();
@@ -39,7 +40,7 @@ class  LTIEdit
 
     var $custom_ary = array();
     var $custom_txt = '';
-    var $costom_prm;
+    var $custom_prm;
 
 
     function  __construct($cmid, $courseid, $minstance)

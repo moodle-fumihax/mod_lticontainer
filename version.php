@@ -28,7 +28,7 @@ $plugin = new stdClass();
 
 $plugin->release   = '1.5.2';
 
-$plugin->version   = 2025020300;    // for PHP-8.1 later
+$plugin->version   = 2025020301;    // for PHP-8.1 later
 //$plugin->version = 2024060500;    // add activity limit
 //$plugin->version = 2024041300;    // closing submit, join volume
 //$plugin->version = 2024010500;    // for Icon

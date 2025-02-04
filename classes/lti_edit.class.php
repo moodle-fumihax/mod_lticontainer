@@ -93,12 +93,12 @@ class  LTIEdit
         // for Guest
         $this->isGuest = isguestuser();
         if ($this->isGuest) {
-            print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
+            ltictr_print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
         }
         //
         $this->mcontext = context_module::instance($cmid);
         if (!has_capability('mod/lticontainer:lti_view', $this->mcontext)) {
-            print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
+            ltictr_print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
         }
         if (has_capability('mod/lticontainer:lti_edit', $this->mcontext)) {
             $this->edit_cap = true;
@@ -120,7 +120,7 @@ class  LTIEdit
         $ltis = db_get_disp_ltis($this->courseid, $this->minstance);
 
         if (!array_key_exists($this->lti_id, $ltis)) {
-            print_error('no_ltiid_found', 'mod_lticontainer', $this->error_url);
+            ltictr_print_error('no_ltiid_found', 'mod_lticontainer', $this->error_url);
         }
 
         return true;
@@ -134,17 +134,17 @@ class  LTIEdit
         $fields = 'id, course, name, typeid, instructorcustomparameters, launchcontainer, timemodified';
         $this->lti_rec = $DB->get_record('lti', array('id' => $this->lti_id), $fields);
         if (!$this->lti_rec) {
-            print_error('no_data_found', 'mod_lticontainer', $this->error_url);
+            ltictr_print_error('no_data_found', 'mod_lticontainer', $this->error_url);
         }
         #
         if ($this->minstance->use_podman==1) {
             if (!file_exists(LTICONTAINER_PODMAN_CMD) and  !file_exists(LTICONTAINER_PODMAN_REMOTE_CMD)) {
-                print_error('no_podman_command', 'mod_lticontainer', $this->error_url);
+                ltictr_print_error('no_podman_command', 'mod_lticontainer', $this->error_url);
             }
         }
         else {
             if (!file_exists(LTICONTAINER_DOCKER_CMD)) {
-                print_error('no_docker_command', 'mod_lticontainer', $this->error_url);
+                ltictr_print_error('no_docker_command', 'mod_lticontainer', $this->error_url);
             }
         }
         
@@ -158,13 +158,13 @@ class  LTIEdit
         // POST
         if ($custom_data = data_submitted()) {
             if (!$this->edit_cap) {
-                print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
+                ltictr_print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
             }
             if (!has_capability('mod/lticontainer:db_write', $this->mcontext)) {
-                print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
+                ltictr_print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
             }
             if (!confirm_sesskey()) {
-                print_error('invalid_sesskey',  'mod_lticontainer', $this->error_url);
+                ltictr_print_error('invalid_sesskey',  'mod_lticontainer', $this->error_url);
             }
 
             //
@@ -210,7 +210,7 @@ class  LTIEdit
         // サーバ上のイメージの一覧取得
         $rslts = container_exec($this->minstance, 'images');
         if (!empty($rslts) and isset($rslts['error'])) {
-            print_error($rslts['error'], 'mod_lticontainer', $this->error_url);
+            ltictr_print_error($rslts['error'], 'mod_lticontainer', $this->error_url);
         }
 
         $i = 0;

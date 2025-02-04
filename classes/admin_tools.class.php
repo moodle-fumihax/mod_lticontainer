@@ -39,7 +39,7 @@ class  AdminTools
 
         $this->mcontext = context_module::instance($cmid);
         if (!has_capability('mod/lticontainer:admin_tools', $this->mcontext)) {
-            print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
+            ltictr_print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
         }
     }
 

@@ -66,7 +66,7 @@ class  JupyterHubAPI
         // for Guest
         $this->isGuest = isguestuser();
         if ($this->isGuest) {
-            print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
+            ltictr_print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
         }
         //
         $this->mcontext = context_module::instance($cmid);
@@ -79,7 +79,7 @@ class  JupyterHubAPI
                 $this->mode = 'personal';
             }
             else {
-                print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
+                ltictr_print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
             }
         }
         //
@@ -128,10 +128,10 @@ class  JupyterHubAPI
         if ($submit_data = data_submitted()) {
             //
             if (!$this->edit_cap) {
-                print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
+                ltictr_print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
             }
             if (!confirm_sesskey()) {
-                print_error('invalid_sesskey', 'mod_lticontainer',  $this->error_url);
+                ltictr_print_error('invalid_sesskey', 'mod_lticontainer',  $this->error_url);
             }
             $this->submitted  = true;
 
@@ -187,7 +187,7 @@ class  JupyterHubAPI
         $jh_users = json_decode($json, false);
         if (is_object($jh_users) && property_exists($jh_users, 'status')) {
             if ($jh_users->status=='403') {
-                print_error('missmatch_jh_api_token', 'mod_lticontainer', $this->error_url);
+                ltictr_print_error('missmatch_jh_api_token', 'mod_lticontainer', $this->error_url);
             }
         }
 

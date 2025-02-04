@@ -57,12 +57,12 @@ class  DashboardView
         // for Guest
         $this->isGuest = isguestuser();
         if ($this->isGuest) {
-            print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
+            ltictr_print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
         }
         //
         $this->mcontext = context_module::instance($cmid);
         if (!has_capability('mod/lticontainer:dashboard_view', $this->mcontext)) {
-            print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
+            ltictr_print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
         }
 
         ////////////////////////////////////////////////////////////////////////////

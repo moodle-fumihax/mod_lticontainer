@@ -47,12 +47,12 @@ class  LTIConnect
         // for Guest
         $this->isGuest = isguestuser();
         if ($this->isGuest) {
-            print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
+            ltictr_print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
         }
         //
         $this->mcontext = context_module::instance($cmid);
         if (!has_capability('mod/lticontainer:lti_view', $this->mcontext)) {
-            print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
+            ltictr_print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
         }
     }
 
@@ -72,10 +72,10 @@ class  LTIConnect
         // POST
         if ($formdata = data_submitted()) {
             if (!has_capability('mod/lticontainer:lti_setting', $this->mcontext)) {
-                print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
+                ltictr_print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
             }
             if (!confirm_sesskey()) {
-                print_error('invalid_sesskey', 'mod_lticontainer', $this->error_url);
+                ltictr_print_error('invalid_sesskey', 'mod_lticontainer', $this->error_url);
             }
             $this->submitted  = true;
 

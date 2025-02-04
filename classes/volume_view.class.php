@@ -46,12 +46,12 @@ class  VolumeView
         // for Guest
         $this->isGuest = isguestuser();
         if ($this->isGuest) {
-            print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
+            ltictr_print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
         }
         //
         $this->mcontext = context_module::instance($cmid);
         if (!has_capability('mod/lticontainer:volume_view', $this->mcontext)) {
-            print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
+            ltictr_print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
         }
         if (has_capability('mod/lticontainer:volume_edit', $this->mcontext)) {
             $this->edit_cap = true;
@@ -72,22 +72,22 @@ class  VolumeView
 
         if ($this->minstance->use_podman==1) {
             if (!file_exists(LTICONTAINER_PODMAN_CMD) and  !file_exists(LTICONTAINER_PODMAN_REMOTE_CMD)) {
-                print_error('no_podman_command', 'mod_lticontainer', $this->error_url);
+                ltictr_print_error('no_podman_command', 'mod_lticontainer', $this->error_url);
             }
         }
         else {
             if (!file_exists(LTICONTAINER_DOCKER_CMD)) {
-                print_error('no_docker_command', 'mod_lticontainer', $this->error_url);
+                ltictr_print_error('no_docker_command', 'mod_lticontainer', $this->error_url);
             }
         }
 
         // POST
         if ($submit_data = data_submitted()) {
             if (!$this->edit_cap) {
-                print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
+                ltictr_print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
             }
             if (!confirm_sesskey()) {
-                print_error('invalid_sesskey', 'mod_lticontainer',  $this->error_url);
+                ltictr_print_error('invalid_sesskey', 'mod_lticontainer',  $this->error_url);
             }
             $this->submitted  = true;
 
@@ -121,7 +121,7 @@ class  VolumeView
         //
         $rslts = container_exec($this->minstance, 'volume ls');
         if (isset($rslts['error'])) {
-            print_error($rslts['error'], 'mod_lticontainer', $this->error_url);
+            ltictr_print_error($rslts['error'], 'mod_lticontainer', $this->error_url);
         }
 
         $i = 0;

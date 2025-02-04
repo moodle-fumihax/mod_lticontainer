@@ -37,7 +37,7 @@ class  ShowDemo
         // for Guest
         $this->isGuest = isguestuser();
         if ($this->isGuest) {
-            print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
+            ltictr_print_error('access_forbidden', 'mod_lticontainer', $this->error_url);
         }
 
         //
@@ -55,7 +55,7 @@ class  ShowDemo
         // Post Check
         if (data_submitted()) {
             if (!confirm_sesskey()) {
-                print_error('invalid_sesskey', 'mod_lticontainer', $this->error_url);
+                ltictr_print_error('invalid_sesskey', 'mod_lticontainer', $this->error_url);
             }
         }
         return true;

@@ -33,6 +33,8 @@ define('LTICONTAINER_LTI_SERVERPATH_CMD' , 'lms_serverpath');
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 /*
+function  ltictr_print_error($message, $mname, $url)
+
 function  timezone_offset()
 function  get_tz_date_str($date, $format)
 function  passed_time($tm)
@@ -57,6 +59,16 @@ function  lticontainer_get_event($cmid, $action, $params='', $info='')
 function  lticontainer_explode_custom_params($custom_params)
 function  lticontainer_join_custom_params($custom_data)
 */
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+function  ltictr_print_error($message, $mname, $url)
+{
+    throw new \moodle_exception($message, $mname, $url);
+    exit;
+}
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////

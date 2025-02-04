@@ -63,7 +63,7 @@ function  lticontainer_join_custom_params($custom_data)
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-function  ltictr_print_error($message, $mname, $url)
+function  ltictr_print_error($message, $mname=null, $url=null)
 {
     throw new \moodle_exception($message, $mname, $url);
     exit;

@@ -177,8 +177,8 @@ $string['memlimit_cmd_ttl'] = 'Memory Limit';
 $string['actlimit_cmd_ttl'] = 'Activity Limit';
 
 // view.php
-$string['wiki_url'] = 'https://gitlab.nsl.tuis.ac.jp/iseki/mod_lticontainer/-/wikis/mod_lticontainer';
-$string['git_url']  = 'https://gitlab.nsl.tuis.ac.jp/iseki/mod_lticontainer';
+$string['wiki_url'] = 'https://github.com/jupyter-fumihax/lticontainerspawner/wiki/Moodle-&-JupyterHub';
+$string['git_url']  = 'https://github.com/moodle-fumihax/mod_lticontainer';
 $string['Edit'] = 'Edit';
 $string['Edit_settings'] = 'Edit settings';
 $string['Edit_display_settings'] = 'Edit display settings';

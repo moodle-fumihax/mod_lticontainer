@@ -27,6 +27,7 @@ UNLOCK_COM=${UNLOCK_BIN}" "${LOCK_FL}" "${LOCK_USR}
 #
 export SSH_PASSWORD=$SSH_PASS
 export SSH_ASKPASS=$0
+export SSH_ASKPASS_REQUIRE=force
 export DISPLAY=:0.0
 #
 setsid ssh -oStrictHostKeyChecking=no -oServerAliveInterval=120 -oServerAliveCountMax=3 ${SSH_USER}@${SSH_HOST} ${UNLOCK_COM}

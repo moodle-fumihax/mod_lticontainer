@@ -28,23 +28,25 @@ printf -v SSH_USER '%q' "$2"
 printf -v SSH_PASS '%q' "$3"
 
 #
-if [ "$4" != "" ]; then
+if [ -n "${4:-}" ]; then
     printf -v LLSOCKET '%q' "$4"
 else
     LLSOCKET=/tmp/lticontainer_${SSH_HOST}.sock
 fi
 #
-if [ "$5" != "" ]; then
+if [ -n "${5:-}" ]; then
     printf -v RTSOCKET '%q' "$5"
 else
     RTSOCKET=/var/run/docker.sock
 fi
 
-WEBGROUP=`groups`
+#WEBGROUP=`groups`
+WEBGROUP="$(id -gn)"
 
 #
 export SSH_PASSWORD=$SSH_PASS
 export SSH_ASKPASS=$0
+export SSH_ASKPASS_REQUIRE=force
 export DISPLAY=:0.0
 
 rm -f $LLSOCKET
@@ -63,6 +65,6 @@ while [ ! -e $LLSOCKET ]; do
     fi
 done
 
-chgrp $WEBGROUP $LLSOCKET
-chmod g+rw $LLSOCKET
+chgrp $WEBGROUP $LLSOCKET || true
+chmod g+rw $LLSOCKET || true
 

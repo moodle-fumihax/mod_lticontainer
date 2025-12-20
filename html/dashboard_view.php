@@ -36,13 +36,13 @@ function show_dashboard_view($cmid, $charts_data)
     $col_num   = 4;
 
     // チャートを描画
-    echo '<table width="80%" border="0" align="center" cellpadding="0" cellspacing="0">';
+    echo '<table width="80%" class="noborder" border="0" align="center" cellpadding="0" cellspacing="0">';
     $i = 0;
     $tbps = 80; // <table> 割合 %
     $tdps = $tbps/$col_num;
     foreach ($charts_data as $data) {
         if ($i%$col_num==0) {
-            echo '<table border="0" align="center" cellpadding="0" cellspacing="0">';
+            echo '<table class="noborder" border="0" align="center" cellpadding="0" cellspacing="0">';
             echo '<tr><td><strong>'.$chart_ttl[$i/$col_num].'</strong></td></tr>';
             echo '</table>';
             echo '<table width="'.$tbps.'%" border="1" align="center" cellpadding="0" cellspacing="0" style="table-layout: fixed;">';

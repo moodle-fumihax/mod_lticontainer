@@ -4,10 +4,10 @@
   <?php include(__DIR__."/../html/styles.css"); ?>
 </style>
 
-<table align="center" class="generalbox">
+<table align="center" class="generalbox noborder">
   <tr>
     <td align="center">
-      <table border="0" style="margin: 0px 0px 0px 0px;">
+      <table class="noborder" border="0" style="margin: 0px 0px 0px 0px;">
         <tr>
           <td bgcolor="#ff7777">&nbsp;</td>
           <td bgcolor="#ff7777">
@@ -23,7 +23,7 @@
     <td class="generalboxcontent" align="center">
 
       <form name="gsess" method="post" action="<?php echo $this->submit_url;?>">
-        <table border="0" align="center" cellpadding="0" cellspacing="0">
+        <table class="noborder" border="0" align="center" cellpadding="0" cellspacing="0">
           <tr>
             <?php show_jhuser_delete_table($this->deletes, $this->users, $this->minstance->namepattern); ?>
           </tr>

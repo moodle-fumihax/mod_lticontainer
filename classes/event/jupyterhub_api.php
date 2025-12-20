@@ -36,7 +36,7 @@ class jupyterhub_api extends \core\event\base
 
     protected function init()
     {
-        $this->data['crud'] = 'crud';                   // イベントの種類　c(reate), r(ead), u(pdate), d(elete)
+        $this->data['crud'] = 'u';                      // イベントの種類　c(reate), r(ead), u(pdate), d(elete)
         $this->data['edulevel'] = self::LEVEL_OTHER;    // 教育レベル LEVEL_TEACHING, LEVEL_PARTICIPATING or LEVEL_OTHER 
         $this->data['objecttable'] = 'lticontainer';
     }

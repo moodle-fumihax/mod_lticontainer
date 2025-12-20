@@ -14,7 +14,7 @@ function show_chart_view($args)
 
     // チャートを描画
     echo '<h3><strong>'.$args->chart_title.'</strong></h3>';
-    echo '<table border="1" align="center" cellpadding="0" cellspacing="0">';
+    echo '<table class="noborder" border="1" align="center" cellpadding="0" cellspacing="0">';
     echo   '<tr><td width="'.CHART_VIEW_SIZE.'" align="center">';
     //
     if (!empty($args->charts)) {

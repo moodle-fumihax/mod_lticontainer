@@ -38,5 +38,6 @@ class chart_view extends \core\event\base
     {
         $this->data['crud'] = 'r';                       // イベントの種類　c(reate), r(ead), u(pdate), d(elete)
         $this->data['edulevel'] = self::LEVEL_OTHER;     // 教育レベル LEVEL_TEACHING, LEVEL_PARTICIPATING or LEVEL_OTHER 
+        $this->data['objecttable'] = 'lticontainer';
     }
 }

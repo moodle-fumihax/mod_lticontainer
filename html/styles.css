@@ -1,53 +1,100 @@
 
-.py-3 {
+/* mod_lticontainer styles (scoped for Moodle 5 / Boost) */
+
+/* 余白調整：lticontainer 画面内だけに限定 */
+body.path-mod-lticontainer .py-3 {
     padding-top: 0rem !important;
     padding-bottom: 0rem !important;
 }
 
 
 /************************************/
+/* Tables */
 
-table {
+/* table 全体の下マージン（lticontainer 画面内のみ） */
+body.path-mod-lticontainer table {
     margin-bottom: 0.3em;
 }
 
-td {
+/*
+ * 枠線のないテーブルにしたい場合は，HTML 側で <table class="... noborder"> を付ける．
+ * 例）<table class="noborder">
+ * 例）<table class="generaltable noborder">
+ */
+body.path-mod-lticontainer table.noborder,
+body.path-mod-lticontainer table.noborder * {
+    border: 0 !important;
+}
+
+/* テーブルの線の強制削除（Moodle 5 / Boost 対応） */
+/*
+body.path-mod-lticontainer table,
+body.path-mod-lticontainer table * {
+    border: 0 !important;
+}
+*/
+
+
+/* セルの padding（lticontainer 画面内のみ） */
+body.path-mod-lticontainer td {
     padding: 0.3em;
 }
 
 
-h2, .h2 {
+/************************************/
+/* print_tabs() */
+
+/* 外枠なしで中央寄せ（Flex 方式） */
+body.path-mod-lticontainer .ltictr-tabs-center {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.0em;
+}
+
+
+/************************************/
+/* Headings */
+
+body.path-mod-lticontainer h2,
+body.path-mod-lticontainer .h2 {
     font-size: 1.4rem !important;
 }
 
-
-h3, .h3 {
+body.path-mod-lticontainer h3,
+body.path-mod-lticontainer .h3 {
     font-size: 1.2rem !important;
 }
 
-
-h4, .h4 {
+body.path-mod-lticontainer h4,
+body.path-mod-lticontainer .h4 {
     font-size: 1.0rem !important;
 }
 
 
-.head {
+/************************************/
+/* Custom table row/cell classes */
+
+body.path-mod-lticontainer .head {
     font-weight: bold;
     color: #105ba7;
     background-color: #ddd;
 }
 
-.odd {
+body.path-mod-lticontainer .odd {
     font-weight: bold;
     background-color: #eee;
 }
 
-.even {
+body.path-mod-lticontainer .even {
     font-weight: bold;
     background-color: #eee;
 }
 
-.tabtree .tabrow0 li {
+
+/************************************/
+/* Tabs */
+
+body.path-mod-lticontainer .tabtree .tabrow0 li {
     margin-right: 0px;
 }
 

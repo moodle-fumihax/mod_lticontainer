@@ -34,6 +34,7 @@ $string['datetime_format_m'] = 'm/d H:i';
 $string['pluginname'] = 'LTIContainer';
 $string['modulename'] = 'LTIContainer';
 $string['modulenameplural'] = 'LTIContainer';
+$string['pluginadministration'] = 'LTI Container administration';
 
 // mod_form
 $string['lticontainername']  = 'Name ';

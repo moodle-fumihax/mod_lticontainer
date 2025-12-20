@@ -28,6 +28,17 @@ defined('MOODLE_INTERNAL') || die();
 
 $capabilities = array(
 
+    'mod/lticontainer:addinstance' => array(
+        'riskbitmask' => RISK_SPAM | RISK_CONFIG,
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_COURSE,
+        'archetypes' => array(
+            'editingteacher' => CAP_ALLOW,
+            'manager' => CAP_ALLOW
+        ),
+        'clonepermissionsfrom' => 'moodle/course:manageactivities',
+    ),
+
     'mod/lticontainer:lti_view' => array(
         'captype' => 'read',
         'contextlevel' => CONTEXT_MODULE,

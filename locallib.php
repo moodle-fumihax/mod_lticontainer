@@ -399,9 +399,12 @@ function  lticontainer_get_event($cmid, $action, $params='', $info='')
     $event = null;
     if (!is_array($params)) $params = array();
 
+    $cm = get_coursemodule_from_id('lticontainer', $cmid, 0, false, MUST_EXIST);
+    $instanceid = (int)$cm->instance;
     $args = array(
-        'context' => context_module::instance($cmid),
-        'other'   => array('params' => $params, 'info'=> $info),
+        'context'  => context_module::instance($cmid),
+        'objectid' => $instanceid,
+        'other'    => array('params' => $params, 'info'=> $info),
     );
     //
     if      ($action=='over_view') {

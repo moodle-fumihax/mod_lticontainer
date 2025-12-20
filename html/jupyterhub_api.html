@@ -4,11 +4,11 @@
   <?php include(__DIR__."/../html/styles.css"); ?>
 </style>
 
-<!-- <table width="70%" border="0" align="center" cellpadding="0" cellspacing="0" > -->
-<table border="0" align="center" cellpadding="0" cellspacing="0" >
+<!-- <table width="70%" class="noborder" border="0" align="center" cellpadding="0" cellspacing="0" > -->
+<table class="noborder" border="0" align="center" cellpadding="0" cellspacing="0" >
   <tr>
     <td align="center">
-      <table border="0" style="margin: 0px 0px 0px 0px;">
+      <table class="noborder" border="0" style="margin: 0px 0px 0px 0px;">
         <tr>
           <td>
             <?php echo $OUTPUT->heading('<strong>'.get_string('jupyterhub_api_tab','mod_lticontainer').' :: '.$this->minstance->name.'</strong>'); ?>
@@ -19,7 +19,7 @@
   </tr>
   <tr>
     <td align="center">
-      <table border="0" style="margin: 0px 0px 0px 0px;">
+      <table class="noborder" border="0" style="margin: 0px 0px 0px 0px;">
         <tr>
           <td>Status : </td> 
           <td><?php select_jupyterhub_status($this->action_url, $this->sort_params, $this->status); ?></td>
@@ -28,7 +28,7 @@
     </td>
   </tr>
   <tr>
-    <td class="generalboxcontent" align="center">
+    <td class="generalboxcontent noborder" align="center">
 
       <form name="gsess" method="post" action="<?php echo $this->submit_url;?>">
         <?php if ($this->edit_cap) { ?>
@@ -36,8 +36,8 @@
           <input type='hidden' name='course'  value='<?php echo $this->courseid;?>' />
           <input type='hidden' name='sesskey' value='<?php echo sesskey();?>' />
         <?php } ?>
-        <!-- <table border="0" align="center" cellpadding="0" cellspacing="0"> -->
-        <table align="center" class="generalbox">
+        <!-- <table class="noborder" border="0" align="center" cellpadding="0" cellspacing="0"> -->
+        <table align="center" class="generalbox noborder">
           <tr>
             <td>
               <?php show_jupyterhub_table($this->users, $this->courseid, $this->edit_cap, $this->minstance->namepattern, 

@@ -38,5 +38,6 @@ class volume_delete extends \core\event\base
     {
         $this->data['crud'] = 'd';                       // イベントの種類　c(reate), r(ead), u(pdate), d(elete)
         $this->data['edulevel'] = self::LEVEL_OTHER;     // 教育レベル LEVEL_TEACHING, LEVEL_PARTICIPATING or LEVEL_OTHER 
+        $this->data['objecttable'] = 'lticontainer';
     }
 }

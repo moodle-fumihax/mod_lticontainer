@@ -46,6 +46,7 @@ class  ChartView
     var $charts     = array();
     var $chart_kind;
     var $chart_title;
+    var $time_period;
 
     var $args;
 

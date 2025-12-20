@@ -126,11 +126,11 @@ function  echo_tabs($current_tab, $course_id, $cm_id, $context, $instance)
 
     if(count($row) > 1) {
         $tabs[] = $row;
-        echo '<table align="center" style="margin-bottom:0.0em;"><tr><td>';
         echo '<style type="text/css">';
         include(__DIR__.'/../html/styles.css');
         echo '</style>';
+        echo '<div class="ltictr-tabs-center">';
         print_tabs($tabs, $current_tab, $inactive, $activated);
-        echo '</td></tr></table>';
+        echo '</div>';
     }
 }

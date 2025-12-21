@@ -58,6 +58,14 @@ body.path-mod-lticontainer .ltictr-tabs-center {
 
 
 /************************************/
+/* Tabs */
+
+body.path-mod-lticontainer .tabtree .tabrow0 li {
+    margin-right: 0px;
+}
+
+
+/************************************/
 /* Headings */
 
 body.path-mod-lticontainer h2,
@@ -93,13 +101,5 @@ body.path-mod-lticontainer .odd {
 body.path-mod-lticontainer .even {
     font-weight: bold;
     background-color: #eee;
-}
-
-
-/************************************/
-/* Tabs */
-
-body.path-mod-lticontainer .tabtree .tabrow0 li {
-    margin-right: 0px;
 }
 

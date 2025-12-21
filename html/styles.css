@@ -19,14 +19,14 @@ body.path-mod-lticontainer table {
 /*
  * 枠線のないテーブルにしたい場合は，HTML 側で <table class="... noborder"> を付ける．
  * 例）<table class="noborder">
- * 例）<table class="generaltable noborder">
+ * 例）<table class="generalbox noborder">
  */
 body.path-mod-lticontainer table.noborder,
 body.path-mod-lticontainer table.noborder tr,
 body.path-mod-lticontainer table.noborder td,
 body.path-mod-lticontainer table.noborder th,
 body.path-mod-lticontainer table.noborder thead,
-body.path-mod-lticontainer table.noborder tbody {
+body.path-mod-lticontainer table.noborder * {
     border-style: none !important;
 }
 

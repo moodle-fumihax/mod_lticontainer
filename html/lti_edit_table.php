@@ -4,7 +4,6 @@ function show_lti_edit_table_cmd($cmds, $params, $minstance)
 {
     $table = new html_table();
     //$table->attributes['class'] = 'generaltable';
-    //$table->attributes['class'] = 'generaltable ltictr-cmdtbl';
     //
     $table->head [] = get_string('custom_command', 'mod_lticontainer');
     $table->align[] = 'left';
@@ -77,8 +76,19 @@ function show_lti_edit_table_cmd($cmds, $params, $minstance)
     $table->data[$i][] = '<strong>'.get_string('users_cmd_ttl', 'mod_lticontainer').'</strong>';
     $table->data[$i][] = '<input type="text" name="'.LTICONTAINER_LTI_USERS_CMD.'" size="50" maxlength="200" value="'.$users_cmd.'" />';
     $table->data[$i][] = '&nbsp;';
-    $table->data[$i][] = '&nbsp;';
-    $table->data[$i][] = '&nbsp;';
+    //$table->data[$i][] = '&nbsp;';
+    //$table->data[$i][] = '&nbsp;';
+
+    // LTICONTAINER_LTI_CPULIMIT_CMD
+    $select_opt = '';
+    foreach($params->cpu_limit as $key=>$cpu) {
+        $selected = '';
+        if ($cpu==$cpulimit_cmd) $selected = 'selected="selected"';
+        $select_opt .= '<option value="'.$cpu.'" '.$selected.'>'.$key.'</option>';
+    }
+    $table->data[$i][] = '<strong>'.get_string('cpulimit_cmd_ttl', 'mod_lticontainer').'</strong>';
+    $table->data[$i][] = '<select name="'.LTICONTAINER_LTI_CPULIMIT_CMD.'" >'.$select_opt.'</select>';
+
     #
     /*
     if ($minstance->use_podman==0) {
@@ -96,15 +106,16 @@ function show_lti_edit_table_cmd($cmds, $params, $minstance)
     //$table->data[$i][] = '&nbsp;';
     //$table->data[$i][] = '&nbsp;';
 
-    // LTICONTAINER_LTI_CPULIMIT_CMD
+    // LTICONTAINER_LTI_MEMLIMIT_CMD
     $select_opt = '';
-    foreach($params->cpu_limit as $key=>$cpu) {
+    foreach($params->mem_limit as $key=>$mem) {
         $selected = '';
-        if ($cpu==$cpulimit_cmd) $selected = 'selected="selected"';
-        $select_opt .= '<option value="'.$cpu.'" '.$selected.'>'.$key.'</option>';
+        if ($mem==$memlimit_cmd) $selected = 'selected="selected"';
+        $select_opt .= '<option value="'.$mem.'" '.$selected.'>'.$key.'</option>';
     }
-    $table->data[$i][] = '<strong>'.get_string('cpulimit_cmd_ttl', 'mod_lticontainer').'</strong>';
-    $table->data[$i][] = '<select name="'.LTICONTAINER_LTI_CPULIMIT_CMD.'" >'.$select_opt.'</select>';
+    $table->data[$i][] = '<strong>'.get_string('memlimit_cmd_ttl', 'mod_lticontainer').'</strong>';
+    $table->data[$i][] = '<select name="'.LTICONTAINER_LTI_MEMLIMIT_CMD.'" >'.$select_opt.'</select>';
+
     #
     /*
     if ($minstance->use_podman==0) {
@@ -137,15 +148,15 @@ function show_lti_edit_table_cmd($cmds, $params, $minstance)
     $table->data[$i][] = '<select name="'.LTICONTAINER_LTI_OPTIONS_CMD.'" >'.$select_opt.'</select>';
     /*/
 
-    // LTICONTAINER_LTI_MEMLIMIT_CMD
+    // LTICONTAINER_LTI_ACTLIMIT_CMD
     $select_opt = '';
-    foreach($params->mem_limit as $key=>$mem) {
+    foreach($params->act_limit as $key=>$act) {
         $selected = '';
-        if ($mem==$memlimit_cmd) $selected = 'selected="selected"';
-        $select_opt .= '<option value="'.$mem.'" '.$selected.'>'.$key.'</option>';
+        if ($act==$actlimit_cmd) $selected = 'selected="selected"';
+        $select_opt .= '<option value="'.$act.'" '.$selected.'>'.$key.'</option>';
     }
-    $table->data[$i][] = '<strong>'.get_string('memlimit_cmd_ttl', 'mod_lticontainer').'</strong>';
-    $table->data[$i][] = '<select name="'.LTICONTAINER_LTI_MEMLIMIT_CMD.'" >'.$select_opt.'</select>';
+    $table->data[$i][] = '<strong>'.get_string('actlimit_cmd_ttl', 'mod_lticontainer').'</strong>';
+    $table->data[$i][] = '<select name="'.LTICONTAINER_LTI_ACTLIMIT_CMD.'" >'.$select_opt.'</select>';
 
     /*
     // LTICONTAINER_LTI_CPULIMIT_CMD
@@ -185,16 +196,18 @@ function show_lti_edit_table_cmd($cmds, $params, $minstance)
     $table->data[$i][] = '<strong>'.get_string('lab_url_cmd_ttl', 'mod_lticontainer').'</strong>';
     $table->data[$i][] = '<select name="'.LTICONTAINER_LTI_DEFURL_CMD.'" >'.$select_opt.'</select>';
     $table->data[$i][] = '&nbsp;';
+    $table->data[$i][] = '&nbsp;';
+    $table->data[$i][] = '&nbsp;';
 
     // LTICONTAINER_LTI_ACTLIMIT_CMD
-    $select_opt = '';
-    foreach($params->act_limit as $key=>$act) {
-        $selected = '';
-        if ($act==$actlimit_cmd) $selected = 'selected="selected"';
-        $select_opt .= '<option value="'.$act.'" '.$selected.'>'.$key.'</option>';
-    }
-    $table->data[$i][] = '<strong>'.get_string('actlimit_cmd_ttl', 'mod_lticontainer').'</strong>';
-    $table->data[$i][] = '<select name="'.LTICONTAINER_LTI_ACTLIMIT_CMD.'" >'.$select_opt.'</select>';
+    //$select_opt = '';
+    //foreach($params->act_limit as $key=>$act) {
+    //    $selected = '';
+    //    if ($act==$actlimit_cmd) $selected = 'selected="selected"';
+    //    $select_opt .= '<option value="'.$act.'" '.$selected.'>'.$key.'</option>';
+    //}
+    //$table->data[$i][] = '<strong>'.get_string('actlimit_cmd_ttl', 'mod_lticontainer').'</strong>';
+    //$table->data[$i][] = '<select name="'.LTICONTAINER_LTI_ACTLIMIT_CMD.'" >'.$select_opt.'</select>';
 
     /*
     // LTICONTAINER_LTI_MEMLIMIT_CMD
@@ -247,7 +260,6 @@ function show_lti_edit_table_cmd($cmds, $params, $minstance)
 function show_lti_edit_table_vol($cmds)
 {
     $table = new html_table();
-    //$table->attributes['class'] = 'generaltable ltictr-voltbl';
     //$table->attributes['class'] = 'generaltable';
     //
     $table->head [] = get_string('volume_role', 'mod_lticontainer');

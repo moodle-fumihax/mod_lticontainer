@@ -25,6 +25,7 @@ define('LTICONTAINER_LTI_PRSNALS_CMD',     'lms_prs_');
 define('LTICONTAINER_LTI_SUBMITS_CMD',     'lms_sub_');
 define('LTICONTAINER_LTI_CLOSE_CMD',       'close');
 
+// for ltictr_proxy
 define('LTICONTAINER_LTI_SESSIONINFO_CMD', 'lms_sessioninfo');
 define('LTICONTAINER_LTI_RPCTOKEN_CMD',    'lms_rpctoken');
 define('LTICONTAINER_LTI_SERVERURL_CMD' ,  'lms_serverurl');

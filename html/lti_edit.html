@@ -9,7 +9,7 @@
 
 <?php include(__DIR__."/jquery_script.html"); ?>
 
-<table align='center' class='generalbox'>
+<table align='center' class='generaltable noborder'>
   <tr>
     <td align='center'>
       <table class="noborder" border='0' style='margin: 0px 0px 0px 0px;'>
@@ -25,12 +25,13 @@
     <td>
 
       <form name='gsess' method='post' action='<?php echo $this->action_url;?>'>
-        <table class="noborder" border='0' align='center' cellpadding='0' cellspacing='0'>
+        <table class='generaltable' border='0' align='center' cellpadding='0' cellspacing='0'>
           <tr>
             <?php show_lti_edit_table($this->custom_ary, $this->custom_prm, $this->minstance); ?>
           </tr>
           <tr>
             <td align='center'>
+              <br />
               <?php if ($this->edit_cap) { ?>
                 <input type='hidden' name='id'      value='<?php echo $this->cmid;?>' />
                 <input type='hidden' name='course'  value='<?php echo $this->courseid;?>' />
@@ -41,7 +42,7 @@
                 &nbsp;&nbsp;
               <?php } ?>
               <input type='reset' name='reset' value='<?php echo get_string("reset");?>' />
-              <br /><br />
+              <br />
             </td>
           </tr>
           <tr>
@@ -55,7 +56,7 @@
   <tr><td><hr /></td></tr>
   <tr>
     <td class='generalboxcontent' align='center'>
-      <table align='center' class='generalbox' cellpadding='4' cellspacing='1' border='1'>
+      <table align='center' class='generaltable' cellpadding='4' cellspacing='1' border='1'>
         <tr>
           <td>
             <?php echo nl2br($this->custom_txt); ?>

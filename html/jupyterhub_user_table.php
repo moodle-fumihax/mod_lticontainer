@@ -124,6 +124,7 @@ function  show_jupyterhub_table($users, $courseid, $edit_cap, $name_pattern, $ac
 
 function  show_button_jupyterhub()
 {
+    echo '<br />';
     //echo '<input type="submit" name="esv" value="'.get_string('submit').'" />';
     echo '<input type="submit" name="submit_jhuser_del" value="'.get_string('delete').'" />';
     echo '&nbsp;&nbsp;&nbsp;&nbsp;';

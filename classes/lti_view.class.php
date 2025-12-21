@@ -17,6 +17,7 @@ class  LTIConnect
     var $mcontext;
 
     var $isGuest    = true;
+    var $submitted  = false;
 
     var $action_url = '';
     var $setup_url  = '';

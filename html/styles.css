@@ -22,15 +22,20 @@ body.path-mod-lticontainer table {
  * 例）<table class="generaltable noborder">
  */
 body.path-mod-lticontainer table.noborder,
-body.path-mod-lticontainer table.noborder * {
-    border: 0 !important;
+body.path-mod-lticontainer table.noborder tr,
+body.path-mod-lticontainer table.noborder td,
+body.path-mod-lticontainer table.noborder th,
+body.path-mod-lticontainer table.noborder thead,
+body.path-mod-lticontainer table.noborder tbody {
+    border-style: none !important;
 }
 
-/* テーブルの線の強制削除（Moodle 5 / Boost 対応） */
 /*
-body.path-mod-lticontainer table,
-body.path-mod-lticontainer table * {
-    border: 0 !important;
+body.path-mod-lticontainer table.noborder tbody tr:nth-child(odd) {
+    background: rgba(0,0,0,.03);
+}
+body.path-mod-lticontainer table.noborder tbody tr:nth-child(even) {
+    background: transparent;
 }
 */
 

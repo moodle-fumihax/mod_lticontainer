@@ -25,8 +25,8 @@ body.path-mod-lticontainer table.noborder,
 body.path-mod-lticontainer table.noborder tr,
 body.path-mod-lticontainer table.noborder td,
 body.path-mod-lticontainer table.noborder th,
-body.path-mod-lticontainer table.noborder thead,
-body.path-mod-lticontainer table.noborder * {
+/*body.path-mod-lticontainer table.noborder thead,*/
+body.path-mod-lticontainer table.noborder tbody {
     border-style: none !important;
 }
 

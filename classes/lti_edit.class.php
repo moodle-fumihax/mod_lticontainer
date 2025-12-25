@@ -221,12 +221,20 @@ class  LTIEdit
                 $rslt  = htmlspecialchars($rslt);
                 $rslt  = preg_replace("/\s+/", ' ', trim($rslt));
                 $image = explode(' ', $rslt);
-                $idisp = $image[0].' : '.$image[1]; // image namne
-                if ($image[0]=='&lt;none&gt;' and isset($image[2])) $idisp = $image[2];
-                //
-                if (check_include_substr_and($idisp, $this->imgname_ok)) {
-                    if (!check_include_substr_or($idisp, $this->imgname_ng)) {
-                        $this->images[$i++] = $idisp;
+                if ($image !== null && $image[0] !== null) {
+                    if (strpos($image[0], ':')) {
+                        $idisp = $image[0];                 // image namne
+                    }
+                    else {
+                        $idisp = $image[0].' : '.$image[1]; // image namne
+                    }
+
+                    if ($image[0]=='&lt;none&gt;' and isset($image[2])) $idisp = $image[2];
+                    //
+                    if (check_include_substr_and($idisp, $this->imgname_ok)) {
+                        if (!check_include_substr_or($idisp, $this->imgname_ng)) {
+                            $this->images[$i++] = $idisp;
+                        }
                     }
                 }
             }

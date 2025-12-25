@@ -26,9 +26,10 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin = new stdClass();
 
-$plugin->release   = '1.6.1';
+$plugin->release   = '1.6.2';
 
-$plugin->version   = 2025122001;    // v1.6.1 for Moodle 5, PHP-8.3
+$plugin->version   = 2025122500;    // v1.6.2 for image name bug for Docker
+//$plugin->version = 2025122001;    // v1.6.1 for Moodle 5, PHP-8.3
 //$plugin->version = 2025020303;    // v1.5.2 for PHP-8.1 later
 //$plugin->version = 2024060500;    // add activity limit
 //$plugin->version = 2024041300;    // closing submit, join volume

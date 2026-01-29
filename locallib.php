@@ -546,7 +546,8 @@ function  lticontainer_join_custom_params($custom_data)
 
     if ($custom_data->lms_teachers != '') {
         $lowstr = mb_strtolower($custom_data->lms_teachers);
-        $value  = preg_replace("/[^a-z0-9\*, ]/", '', $lowstr);
+        //$value  = preg_replace("/[^a-z0-9\*, ]/", '', $lowstr);
+        $value  = preg_replace("/[^a-z0-9\*\.-_, ]/", '', $lowstr);
         $param  = LTICONTAINER_LTI_TEACHERS_CMD.'='.$value;
         $custom_params .= $param."\r\n";
     }
